@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt {{ dog[1] }}</title>
+</head>
+<body>
+    <h1>Meet {{ dog[1] }}!</h1>
+    
+    <!-- Display Dog Image -->
+    <img src="{{ dog[5] }}" alt="Photo of {{ dog[1] }}" width="300">
+
+    <p><strong>Breed:</strong> {{ dog[2] }}</p>
+    <p><strong>Age:</strong> {{ dog[3] }} years old</p>
+    <p><strong>Description:</strong> {{ dog[4] }}</p>
+
+    <h2>Are you interested in adopting?</h2>
+    
+    <form action="{{ url_for('adopt_dog_form') }}" method="POST">
+        <input type="hidden" name="dog_id" value="{{ dog[0] }}">
+        <input type="hidden" name="dog_name" value="{{ dog[1] }}">
+
+        <label for="user_name">Your Name:</label>
+        <input type="text" id="user_name" name="user_name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+
+        <button type="submit">Confirm Adoption</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

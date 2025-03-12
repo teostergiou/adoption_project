@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle for Paws</title>
+</head>
+<body>
+    <h2>Add a Dog for Adoption!</h2>
+    <form action="{{ url_for('add_dog') }}" method="POST" enctype="multipart/form-data">
+        <label for="name">Dog Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br><br>
+
+        <label for="photo">Upload a Photo:</label>
+        <input type="file" id="image_url" name="image_url" accept="image/*"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+
+
+    <h2>Adoptable Dogs:</h2>
+    <ul>
+        {% for dog in dogs %}
+            <li>
+                <strong>{{ dog[1] }}</strong> - {{ dog[2] }}, {{ dog[3] }} years old
+                
+                <p>{{ dog[4] }}</p>
+                <a href="{{ url_for('adopt_dog', dog_id=dog[0]) }}">Adopt</a>
+
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

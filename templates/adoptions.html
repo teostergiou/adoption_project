@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Records</title>
+</head>
+<body>
+    <h1>Adoption Records</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Dog Name</th>
+        </tr>
+        {% for adoption in adoptions %}
+        <tr>
+            <td>{{ adoption[1] }}</td>
+            <td>{{ adoption[2] }}</td>
+            <td>{{ adoption[3] }}</td>
+            <td>{{ adoption[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

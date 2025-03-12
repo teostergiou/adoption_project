@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Adoption Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #f4a261;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f6d7b0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel - Adoption Records</h1>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Adopter Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Dog Name</th>
+            <th>Actions</th>
+        </tr>
+        {% for adoption in adoptions %}
+        <tr>
+            <td>{{ adoption[0] }}</td>
+            <td>{{ adoption[1] }}</td>
+            <td>{{ adoption[2] }}</td>
+            <td>{{ adoption[3] }}</td>
+            <td>{{ adoption[5] }}</td>
+            <td>
+                <form action="{{ url_for('delete_adoption', adoption_id=adoption[0]) }}" method="POST" style="display:inline;">
+                    <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px;">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
